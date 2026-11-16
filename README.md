@@ -57,6 +57,11 @@ Then the result should be this:
 
 <img width="804" height="202" alt="image" src="https://github.com/user-attachments/assets/db3e9e53-f403-42a9-84c4-76e4c0a06349" />
 
+Summary:
+Ctypes and CPython are two ways authors can implement Python libraries in C. Ctypes is a versatile way to have many different C functions interact
+with Python without having to create a custom wrapper each time. CPython allows for more control over how C functions interact with Python, but
+requires a bit more work to implement on the authors end.
+
 Link to presentation slides: 
 https://docs.google.com/presentation/d/1burbMSgBWY5OMXmS4DGJg7EMB7wwC5cWxxwqezk1uMg/edit?usp=sharing
 
