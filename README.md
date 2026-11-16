@@ -44,6 +44,21 @@ Then the result should be this in your terminal:
 
 <img width="813" height="144" alt="image" src="https://github.com/user-attachments/assets/8b6ef029-22fc-4df8-96b7-d0cb0c2d2e3e" />
 
+The third experiment I ran was to see how the calls work using a CPython extension instead of ctypes. 
+Here is how to run it: 
+
+<img width="795" height="355" alt="image" src="https://github.com/user-attachments/assets/2334af30-6507-4ead-b1b1-8cee4a17ca3a" />
+
+<img width="833" height="343" alt="image" src="https://github.com/user-attachments/assets/2e1f176b-4d81-4e2a-9fe4-99be02042a3f" />
+
+<img width="839" height="441" alt="image" src="https://github.com/user-attachments/assets/79efdd7e-4332-4305-8a71-950e90b5af82" />
+
+Then the result should be this:
+
+<img width="804" height="202" alt="image" src="https://github.com/user-attachments/assets/db3e9e53-f403-42a9-84c4-76e4c0a06349" />
+
+
+
 
 
 
