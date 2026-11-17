@@ -17,6 +17,7 @@ in C may look like behind the scenes.
 
 Here is how to set that experiment up: 
 
+
 <img width="825" height="229" alt="image" src="https://github.com/user-attachments/assets/5f869068-5d4d-4d0b-9f3a-710878af3961" />
 
 <img width="817" height="373" alt="image" src="https://github.com/user-attachments/assets/532ba21d-749b-4d86-8cbf-d0addf6fae9a" />
@@ -28,6 +29,23 @@ Here is how to set that experiment up:
 Then the result should be this in your terminal: 
 
 <img width="833" height="166" alt="image" src="https://github.com/user-attachments/assets/eb2ecaff-1198-4afb-96f2-e0539dea9d8d" />
+
+To run: 
+
+**macOS**
+
+```bash
+(cd experiment-1 && cc -dynamiclib square.c -o libsquare.dylib && python3 call_square.py)
+```
+
+**Linux**
+
+```bash
+(cd experiment-1 && cc -shared -fPIC square.c -o libsquare.so && python3 call_square.py)
+```
+
+The script checks three inputs and prints `All checks passed`.
+
 
 The second experiment I ran was similar to the first, but squaring each element of an array this time.
 
@@ -44,6 +62,21 @@ Then the result should be this in your terminal:
 
 <img width="813" height="144" alt="image" src="https://github.com/user-attachments/assets/8b6ef029-22fc-4df8-96b7-d0cb0c2d2e3e" />
 
+To run:
+
+```bash
+(cd experiment-2 && cc -dynamiclib square_all.c -o libsquare_all.dylib && python3 run_experiment.py)
+```
+
+**Linux**
+
+```bash
+(cd experiment-2 && cc -shared -fPIC square_all.c -o libsquare_all.so && python3 run_experiment.py)
+```
+
+The buffer changes from `[3.0, -4.0, 0.5]` to `[9.0, 16.0, 0.25]`, and the script prints `Both checks passed.`
+
+
 The third experiment I ran was to see how the calls work using a CPython extension instead of ctypes. 
 Here is how to run it: 
 
@@ -56,6 +89,33 @@ Here is how to run it:
 Then the result should be this:
 
 <img width="804" height="202" alt="image" src="https://github.com/user-attachments/assets/db3e9e53-f403-42a9-84c4-76e4c0a06349" />
+
+To run: 
+
+**macOS**
+
+```bash
+(
+  cd experiment-3 &&
+  cc -bundle -undefined dynamic_lookup $(python3-config --includes) fastmath.c \
+    -o "fastmath$(python3-config --extension-suffix)" &&
+  python3 -c 'import fastmath; print(fastmath.square(0.5))'
+)
+```
+
+**Linux**
+
+```bash
+(
+  cd experiment-3 &&
+  cc -shared -fPIC $(python3-config --includes) fastmath.c \
+    -o "fastmath$(python3-config --extension-suffix)" &&
+  python3 -c 'import fastmath; print(fastmath.square(0.5))'
+)
+```
+
+Expected output: `0.25`
+
 
 Summary:
 Ctypes and CPython are two ways authors can implement Python libraries in C. Ctypes is a versatile way to have many different C functions interact
